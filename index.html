@@ -18,7 +18,7 @@
   <p>
     Add this calendar to Outlook.
   </p>
-  <input type="text" id="ical-proxied" name="ical-proxied" disabled value="" />
+  <input type="text" id="ical-proxied" name="ical-proxied" readonly value="" />
   <script>
     var ical = document.getElementById('ical');
     var icalProxied = document.getElementById('ical-proxied');
@@ -27,9 +27,10 @@
       icalProxied.value = 'https://tentative.schutter.xyz/ical/' + encodeURIComponent(ical.value);
     };
     ical.onblur = function () {
-      icalProxied.disabled = false;
       icalProxied.focus();
-      icalProxied.disabled = true;
+      icalProxied.select();
+    };
+    icalProxied.onfocus = function () {
       icalProxied.select();
     };
   </script>
