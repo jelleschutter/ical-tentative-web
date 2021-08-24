@@ -24,7 +24,7 @@
     var icalProxied = document.getElementById('ical-proxied');
     var test = document.getElementById('test');
     ical.oninput = function () {
-      icalProxied.value = 'https://tentative.jelleschutter.workers.dev/' + encodeURIComponent(ical.value);
+      icalProxied.value = 'https://tentative.schutter.xyz/ical/' + encodeURIComponent(ical.value);
     };
     ical.onblur = function () {
       icalProxied.disabled = false;
