@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>iCal Tentative</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <h1>iCal Tentative</h1>
+  <p>
+    Insert your iCal link below and receive a new iCal calendar where all events are marked as tentative.
+  </p>
+  <h2>Original iCal URL</h2>
+  <input type="text" id="ical" name="ical" placeholder="https://example.com/ical/calendar.ics" />
+  <h2>Tentative iCal URL</h2>
+  <p>
+    Add this calendar to Outlook.
+  </p>
+  <input type="text" id="ical-proxied" name="ical-proxied" disabled value="" />
+  <script>
+    var ical = document.getElementById('ical');
+    var icalProxied = document.getElementById('ical-proxied');
+    var test = document.getElementById('test');
+    ical.oninput = function () {
+      icalProxied.value = 'https://tentative.jelleschutter.workers.dev/' + encodeURIComponent(ical.value);
+    };
+    ical.onblur = function () {
+      icalProxied.disabled = false;
+      icalProxied.focus();
+      icalProxied.disabled = true;
+      icalProxied.select();
+    };
+  </script>
+  <h2>About</h2>
+  <p>
+    Build with <a href="https://workers.cloudflare.com/">Cloudflare Workers</a> & <a href="https://pages.cloudflare.com/">Pages</a>. Checkout the source code on <a href="https://github.com/jelleschutter/ical-tentative">GitHub</a>.
+  </p>
+</body>
+
+</html>
